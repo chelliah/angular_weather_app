@@ -16,6 +16,7 @@
     "bootstrap": "^3.3.5",
     "express": "^4.13.3",
     "forecast": "^0.2.1",
+    "google-geocoding": "^0.1.7",
     "path": "^0.12.7"
   }
 }

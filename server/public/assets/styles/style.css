@@ -2,7 +2,7 @@ body {
     text-align:center;
 }
 canvas {
-    background-color: white;
+    background-color: aliceblue;
     border-radius: 5px;
     -webkit-box-shadow: 0 0 20px -5px rgba(0,0,0,0.75);
     -moz-box-shadow: 0 0 20px -5px rgba(0,0,0,0.75);

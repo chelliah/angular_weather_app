@@ -4,6 +4,7 @@
 var express = require('express');
 var Weather = require('forecast');
 var router = express.Router();
+var geoLocate = require('google-geocoding');
 
 var weather = new Weather({
     service: 'forecast.io',
@@ -17,15 +18,36 @@ var weather = new Weather({
 });
 
 router.get('/data', function(req,res){
-    //console.log(req);
-    var locationInfo = [req.query.lat, req.query.long];
-    weather.get(locationInfo, function(err,weather){
-        if(err){
-            console.log(err);
+    //var locationInfo = [req.query.lat, req.query.long];
+
+    geoLocate.geocode(req.query.place, function(err,location){
+        if (err){
+            console.log(err)
+        }else if(!location){
+            console.log('no entries');
             res.send(false);
+        }else{
+            //console.log(location);
+            var coordinates=[]
+            coordinates.push(location.lat);
+            coordinates.push(location.lng);
+            sendWeather(coordinates)
+
         }
-        res.send(weather);
     });
+
+    function sendWeather(latLong){
+        weather.get(latLong, function(err,weather){
+            if(err){
+                console.log(err);
+                res.send(false);
+            }
+            res.send(weather);
+        });
+    }
 });
+
+
+
 
 module.exports = router;

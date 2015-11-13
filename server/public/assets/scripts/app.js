@@ -3,21 +3,27 @@ var skycons = new Skycons({color: 'pink'});
 
 myApp.controller('WeatherController', ['$scope', '$http', '$animate', function($scope, $http, $animate){
     $scope.search = {};
+    $scope.storeLocation = {};
     $scope.forecast = {};
     $scope.daytime = true;
 
     $scope.getForecast = function(search){
         console.log(search);
         $http.get('/forecast/data', {params: search}).then(function(response){
-            $scope.forecast = response.data;
-            skycons.set('icon', getIcon($scope.forecast.currently.icon));
-            document.getElementById("forecast").className = 'well';
-            $scope.daytime = false;
-            console.log(response.data);
-            skycons.play();
+
+            if(response.data){
+                console.log('hi');
+                $scope.forecast = response.data;
+                skycons.set('icon', getIcon($scope.forecast.currently.icon));
+                $scope.storeLocation = search;
+                document.getElementById("forecast").className = 'well';
+                skycons.play();
+            }else{
+                alert('Sorry, we could not find the weather for ' + search.place)
+            }
         });
         $scope.search = {};
-    }
+    };
 
     $scope.checkTime = function(data){
 
