@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="/assets/styles/style.css">
 </head>
 <body class='day'>
+    <!--<div class="drop"></div>-->
+    <div id="drawing">
+
+    </div>
     <div class="container" ng-controller="WeatherController">
         <header class="well">
             <h1>Weather App</h1>
@@ -20,7 +24,7 @@
             </div>
         </header>
         <div id="forecast" class="ng-hide">
-            <h1>Today's forecast for {{storeLocation.place}}:</h1>
+            <h1>Forecast for {{storeLocation.place}}:</h1>
             <p>{{forecast.daily.summary}}</p>
             <p>Current Temperature is {{forecast.currently.temperature}}°C</p>
             <canvas id="icon" width="128" height="128"></canvas>
@@ -30,6 +34,9 @@
     <script type="text/javascript" src="/vendors/angular.min.js"></script>
     <script type="text/javascript" src="/vendors/angular-animate.min.js"></script>
     <script type="text/javascript" src="/vendors/skycons.js"></script>
+    <script type="text/javascript" src="/vendors/p5.min.js"></script>
+    <script type="text/javascript" src="/vendors/p5.dom.js"></script>
     <script type="text/javascript" src="/assets/scripts/app.js"></script>
+    <script type="text/javascript" src="/assets/scripts/rain.js"></script>
 </body>
 </html>

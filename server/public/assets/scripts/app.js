@@ -17,6 +17,7 @@ myApp.controller('WeatherController', ['$scope', '$http', '$animate', function($
                 skycons.set('icon', getIcon($scope.forecast.currently.icon));
                 $scope.storeLocation = search;
                 document.getElementById("forecast").className = 'well';
+                console.log($scope.forecast);
                 skycons.play();
             }else{
                 alert('Sorry, we could not find the weather for ' + search.place)

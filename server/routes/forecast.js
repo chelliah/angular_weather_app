@@ -28,7 +28,7 @@ router.get('/data', function(req,res){
             res.send(false);
         }else{
             //console.log(location);
-            var coordinates=[]
+            var coordinates=[];
             coordinates.push(location.lat);
             coordinates.push(location.lng);
             sendWeather(coordinates)
