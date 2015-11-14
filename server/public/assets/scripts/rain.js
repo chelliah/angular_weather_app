@@ -13,7 +13,7 @@ function setup(){
 function draw(){
 	canvas = createCanvas(window.innerWidth, window.innerHeight);
 	background(51);
-	rainSystem.addDrop(createVector(random(width), random(height/2)));
+	rainSystem.addDrop(createVector(random(width), random(-200,0)));
 	rainSystem.run();
 }
 
@@ -26,7 +26,7 @@ var Drop = function(position) {
 	this.acceleration = createVector(0, 0.05);
 	this.velocity = createVector(0,0);
 	this.position = position.copy();
-	this.lifespan = 350;
+	this.lifespan = 400;
 };
 
 Drop.prototype.run = function() {
